@@ -5,8 +5,9 @@ import next from 'next';
 import helmet from 'helmet';
 
 import routes from '../routes';
+import config from '../src/config';
 
-const port = parseInt(`${process.env.PORT}`, 10) || 3100;
+const port = config.port;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 
@@ -24,6 +25,11 @@ app.prepare().then(() => {
     immutable: true
   }));
 
+  server.post('/posts', (_, res) => {
+    console.log(`server.post('/posts'`);
+    return res.send([{ name: 'Julian', lastname: 'Porras' }]);
+  });
+
   server.get('*', (req, res) => handler(req, res));
 
   startServer();
@@ -33,4 +39,4 @@ app.prepare().then(() => {
       console.log(`> Ready on http://localhost:${port}`);
     });
   }
-})
+});

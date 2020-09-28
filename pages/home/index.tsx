@@ -1,32 +1,36 @@
 import * as React from 'react';
 
 // Material Components
-import {
-  AppBar, IconButton, Toolbar, Typography, useMediaQuery
-} from '@material-ui/core';
+import { AppBar, Toolbar, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
 
 // Modules
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // Config
 import { withRoot } from '../_app/withRoot';
-import { Temp } from '../_app/Temp';
 import { SearchInput } from './SearchInput';
+
+// Actions
+import { getPosts } from '../../src/actions/postsAction';
 
 function App() {
   const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = React.useState(true);
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm')
   );
+  const items = useSelector((state: RootState) => state.posts.items);
+  console.log('items >>>', items);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  // const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log('getPosts ###');
+    getPosts();
+  });
 
   return (
     <Router>
@@ -34,14 +38,6 @@ function App() {
         <div className={classes.appFrame}>
           <AppBar className={classes.appBar}>
             <Toolbar>
-              <IconButton
-                color='inherit'
-                aria-label='open drawer'
-                onClick={handleDrawerToggle}
-                className={classes.navIconHide}
-              >
-                <MenuIcon />
-              </IconButton>
               <Typography
                 variant='h6'
                 color='inherit'

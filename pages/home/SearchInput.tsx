@@ -26,7 +26,6 @@ interface Props {
 
 export function SearchInput(props: Props) {
   const classes = useStyles();
-  console.log('useSelector', useSelector);
   const [open, setOpen] = React.useState(false);
   // const { issuesList, filters } = useSelector((state: any) => state.issues);
   // const issuesActions = useActions(IssuesActions);
