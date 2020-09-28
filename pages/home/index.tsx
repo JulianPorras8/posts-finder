@@ -7,26 +7,15 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import Grid from '@material-ui/core/Grid';
 
 // Modules
-import { Route, Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 // Config
-import { history } from '../../src/configureStore';
-// import { IssuesPage } from './pages';
-import { withRoot } from './withRoot';
-import { Temp } from './Temp';
-
-function Routes() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.content}>
-      <Route exact={true} path='/' component={<Temp />} />
-      <Route exact={true} path='/issues' component={<Temp />} />
-    </div>
-  );
-}
+import { withRoot } from '../_app/withRoot';
+import { Temp } from '../_app/Temp';
+import { SearchInput } from './SearchInput';
 
 function App() {
   const classes = useStyles();
@@ -40,7 +29,7 @@ function App() {
   };
 
   return (
-    <Router history={history}>
+    <Router>
       <div className={classes.root}>
         <div className={classes.appFrame}>
           <AppBar className={classes.appBar}>
@@ -62,14 +51,23 @@ function App() {
               </Typography>
             </Toolbar>
           </AppBar>
-          <Routes />
+          <div className={classes.content}>
+            <Grid container className={classes.root}>
+              <Grid container justify={'center'}>
+                <SearchInput
+                // showDetailButton={handleShowDetailButton}
+                // selectedIssue={handleSelectedIssue}
+                // issue={selectedIssue}
+                />
+              </Grid>
+            </Grid>
+          </div>
         </div>
       </div>
     </Router>
   );
 }
 
-const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: '100%',

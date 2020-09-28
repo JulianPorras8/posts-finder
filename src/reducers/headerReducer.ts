@@ -13,7 +13,7 @@ export const initialState = {
   searchInputText: '',
 };
 
-export default function headerReducer(state = initialState, action = {}) {
+export default function headerReducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case TOGGLE_SEARCH:
       return {

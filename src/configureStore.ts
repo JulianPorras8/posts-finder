@@ -1,5 +1,5 @@
-import { createBrowserHistory } from 'history';
 import * as localforage from 'localforage';
+import storage from 'redux-persist/lib/storage';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
@@ -9,11 +9,13 @@ import createSagaMiddleware from 'redux-saga';
 
 // Reducers
 import rootReducer from './reducers';
+// Sagas
+import sagas from './sagas';
 
 const persistConfig: PersistConfig<any> = {
   key: 'root',
   version: 1,
-  storage: localforage,
+  storage,
 };
 
 const sagaMiddleware = createSagaMiddleware();
@@ -28,12 +30,12 @@ if (dev) {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+
 export default () => {
   const store = createStore(persistedReducer, {}, middleware) as any;
   const persistor = persistStore(store);
-  return { store, persistor };
+
+  store.sagaTask = sagaMiddleware.run(sagas);
+
+  return { createStore: () => store, persistor };
 };
-
-const history = createBrowserHistory();
-
-export { history };

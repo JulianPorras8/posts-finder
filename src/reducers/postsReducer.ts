@@ -13,7 +13,7 @@ export const initialState = {
   pageNumber: 1,
 };
 
-export default function postReducer(state = initialState, action = {}) {
+export default function postReducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case GET_POSTS:
       return { ...state, isLoading: true };
@@ -29,7 +29,7 @@ export default function postReducer(state = initialState, action = {}) {
     case UPDATE_POST:
       return {
         ...state,
-        items: state.items.map((item) => {
+        items: state.items.map((item: any) => {
           if (item.id === action.payload.id) {
             return {
               ...item,

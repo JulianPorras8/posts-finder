@@ -7,7 +7,7 @@ export const initialState = {
   body: '',
 };
 
-export default function editFormReducer(state = initialState, action = {}) {
+export default function editFormReducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case SHOW_DIALOG:
       return {

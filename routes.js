@@ -1,12 +1,9 @@
-const nextRoutes = require('next-routes')
-const routes = module.exports = nextRoutes()
+// #region Global Imports
+const nextRoutes = require('next-routes');
+// #endregion Global Imports
 
-const APP_ROUTES = [{
-  page: 'index',
-  pattern: '/'
-}, {
-  page: 'about',
-  pattern: '/about'
-}];
+const routes = (module.exports = nextRoutes());
 
-APP_ROUTES.forEach(route => routes.add(route));
+routes.add('home', '/');
+
+export default routes;
