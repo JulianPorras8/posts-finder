@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Detail /> matches snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "sagaTask": Object {
+        "@@redux-saga/TASK": true,
+        "cancel": [Function],
+        "cont": [Function],
+        "context": Object {},
+        "end": [Function],
+        "error": [Function],
+        "id": 1,
+        "isAborted": [Function],
+        "isCancelled": [Function],
+        "isRoot": true,
+        "isRunning": [Function],
+        "joiners": Array [],
+        "meta": Object {
+          "location": undefined,
+          "name": "rootSaga",
+        },
+        "queue": Object {
+          "abort": [Function],
+          "addTask": [Function],
+          "cancelAll": [Function],
+          "getTasks": [Function],
+        },
+        "result": [Function],
+        "setContext": [Function],
+        "toPromise": [Function],
+      },
+      "subscribe": [Function],
+    }
+  }
+>
+  <Detail
+    id="0"
+  >
+    <Styled(main)>
+      <main
+        className="css-13d1z4c"
+      >
+        <DetailContainer
+          id="0"
+        >
+          <Styled(section)>
+            <section
+              className="css-e8l23f"
+            >
+              <DetailCard
+                content="1"
+              >
+                <Styled(article)>
+                  <article
+                    className="css-cyi3zl"
+                  >
+                    <h3>
+                      1
+                    </h3>
+                  </article>
+                </Styled(article)>
+              </DetailCard>
+              <Styled(div)>
+                <div
+                  className="css-1apaql6"
+                >
+                  <div>
+                    <Button
+                      buttonType="arrow_back"
+                      onClickHandler={[Function]}
+                    >
+                      <Styled(button)
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="css-qkqg1v"
+                          onClick={[Function]}
+                        >
+                          <i
+                            className="material-icons"
+                          >
+                            arrow_back
+                          </i>
+                        </button>
+                      </Styled(button)>
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      buttonType="done"
+                      onClickHandler={[Function]}
+                    >
+                      <Styled(button)
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="css-qkqg1v"
+                          onClick={[Function]}
+                        >
+                          <i
+                            className="material-icons"
+                          >
+                            done
+                          </i>
+                        </button>
+                      </Styled(button)>
+                    </Button>
+                  </div>
+                </div>
+              </Styled(div)>
+            </section>
+          </Styled(section)>
+        </DetailContainer>
+      </main>
+    </Styled(main)>
+  </Detail>
+</Provider>
+`;

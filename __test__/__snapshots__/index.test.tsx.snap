@@ -1,0 +1,224 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Index /> matches snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "sagaTask": Object {
+        "@@redux-saga/TASK": true,
+        "cancel": [Function],
+        "cont": [Function],
+        "context": Object {},
+        "end": [Function],
+        "error": [Function],
+        "id": 1,
+        "isAborted": [Function],
+        "isCancelled": [Function],
+        "isRoot": true,
+        "isRunning": [Function],
+        "joiners": Array [],
+        "meta": Object {
+          "location": undefined,
+          "name": "rootSaga",
+        },
+        "queue": Object {
+          "abort": [Function],
+          "addTask": [Function],
+          "cancelAll": [Function],
+          "getTasks": [Function],
+        },
+        "result": [Function],
+        "setContext": [Function],
+        "toPromise": [Function],
+      },
+      "subscribe": [Function],
+    }
+  }
+>
+  <Index>
+    <Styled(main)>
+      <main
+        className="css-iw1b62"
+      >
+        <RegisterContainer>
+          <Styled(section)>
+            <section
+              className="css-1bmhh28"
+            >
+              <Styled(div)>
+                <div
+                  className="css-1rmxbqf"
+                >
+                  <ContentInput
+                    content="input content"
+                    onChangeHandler={[Function]}
+                    onKeyDownHandler={[Function]}
+                  >
+                    <Styled(input)
+                      onChange={[Function]}
+                      onKeyDown={[Function]}
+                      type="text"
+                      value="input content"
+                    >
+                      <input
+                        className="css-1oqk1mj"
+                        onChange={[Function]}
+                        onKeyDown={[Function]}
+                        type="text"
+                        value="input content"
+                      />
+                    </Styled(input)>
+                  </ContentInput>
+                  <Button
+                    buttonColor={false}
+                    buttonType="create"
+                    onClickHandler={[Function]}
+                  >
+                    <Styled(button)
+                      buttonColor={false}
+                      onClick={[Function]}
+                    >
+                      <button
+                        className="css-qkqg1v"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="material-icons"
+                        >
+                          create
+                        </i>
+                      </button>
+                    </Styled(button)>
+                  </Button>
+                </div>
+              </Styled(div)>
+            </section>
+          </Styled(section)>
+        </RegisterContainer>
+        <ListContainer>
+          <Styled(section)>
+            <section
+              className="css-1xejrc1"
+            >
+              <Styled(div)>
+                <div
+                  className="css-13l2em8"
+                >
+                  <TodoCard
+                    content="1"
+                    id={0}
+                    key="0"
+                  >
+                    <Styled(article)>
+                      <article
+                        className="css-13g428g"
+                      >
+                        <Link
+                          href="/detail/0"
+                        >
+                          <a
+                            href="/detail/0"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                          >
+                            <Content>
+                              <Styled(div)>
+                                <div
+                                  className="css-vapdr2"
+                                >
+                                  <h3>
+                                    1
+                                  </h3>
+                                </div>
+                              </Styled(div)>
+                            </Content>
+                          </a>
+                        </Link>
+                        <Button
+                          buttonType="done"
+                          onClickHandler={[Function]}
+                        >
+                          <Styled(button)
+                            onClick={[Function]}
+                          >
+                            <button
+                              className="css-qkqg1v"
+                              onClick={[Function]}
+                            >
+                              <i
+                                className="material-icons"
+                              >
+                                done
+                              </i>
+                            </button>
+                          </Styled(button)>
+                        </Button>
+                      </article>
+                    </Styled(article)>
+                  </TodoCard>
+                  <TodoCard
+                    content="2"
+                    id={1}
+                    key="1"
+                  >
+                    <Styled(article)>
+                      <article
+                        className="css-13g428g"
+                      >
+                        <Link
+                          href="/detail/1"
+                        >
+                          <a
+                            href="/detail/1"
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                          >
+                            <Content>
+                              <Styled(div)>
+                                <div
+                                  className="css-vapdr2"
+                                >
+                                  <h3>
+                                    2
+                                  </h3>
+                                </div>
+                              </Styled(div)>
+                            </Content>
+                          </a>
+                        </Link>
+                        <Button
+                          buttonType="done"
+                          onClickHandler={[Function]}
+                        >
+                          <Styled(button)
+                            onClick={[Function]}
+                          >
+                            <button
+                              className="css-qkqg1v"
+                              onClick={[Function]}
+                            >
+                              <i
+                                className="material-icons"
+                              >
+                                done
+                              </i>
+                            </button>
+                          </Styled(button)>
+                        </Button>
+                      </article>
+                    </Styled(article)>
+                  </TodoCard>
+                </div>
+              </Styled(div)>
+            </section>
+          </Styled(section)>
+        </ListContainer>
+      </main>
+    </Styled(main)>
+  </Index>
+</Provider>
+`;
