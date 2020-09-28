@@ -6,7 +6,7 @@ import { ContentInput } from '@components/input';
 import { Button } from '@components/button';
 import { BREAKPOINT, COLOR, BUTTON_TYPE } from '@constants/index';
 
-import { ETodoType } from '@redux/todo/todoType';
+import { ETodoType } from '@redux/reducers/todoType';
 
 const RegisterContainer: React.FC = () => {
   const [content, setContent] = useState<string>('');

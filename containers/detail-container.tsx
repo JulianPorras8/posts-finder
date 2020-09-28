@@ -8,7 +8,7 @@ import { DetailCard } from '@components/card';
 import { COLOR, BUTTON_TYPE } from '@constants/index';
 
 import { TRootState } from '@redux/rootReducer';
-import { ETodoType } from '@redux/todo/todoType';
+import { ETodoType } from '@redux/reducers/todoType';
 
 interface IProps {
   id: string;

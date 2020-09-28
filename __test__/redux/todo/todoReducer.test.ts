@@ -1,5 +1,5 @@
-import todoReducer, { initialTodoState } from '@redux/todo/todoReducer';
-import { ETodoType } from '@redux/todo/todoType';
+import todoReducer, { initialTodoState } from '@redux/reducers/todoReducer';
+import { ETodoType } from '@redux/reducers/todoType';
 
 describe('todoReducer', () => {
   const mockTodoDatas = [

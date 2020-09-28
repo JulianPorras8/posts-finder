@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import DetailContainer from '@containers/detail-container';
 
-import { ETodoType } from '@redux/todo/todoType';
+import { ETodoType } from '@redux/reducers/todoType';
 
 const Detail = ({ id }) => {
   return (

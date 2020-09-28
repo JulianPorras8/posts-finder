@@ -1,15 +1,41 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
-import { AppInitialProps, AppProps, AppContext } from 'next/app';
+import { AppInitialProps, AppProps, AppContext, Container } from 'next/app';
 import Head from 'next/head';
+import { Persistor } from 'redux-persist';
+import { CssBaseline } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 import configureStore from '../redux/configureStore';
 import { TRootState } from '@redux/rootReducer';
 
-type Props = { store: Store<TRootState> } & AppInitialProps & AppProps;
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#e5e5e5',
+      main: '#727272',
+      dark: '#363839',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff5e50',
+      main: '#e41e26',
+      dark: '#a90000',
+      contrastText: '#fff',
+    },
+  },
+});
+
+interface IStore extends Store<TRootState> {
+  persistor: Persistor;
+}
+
+type Props = { store: IStore } & AppInitialProps & AppProps;
 
 type AppPage<P = {}> = {
   (props: P): JSX.Element | null;
@@ -20,11 +46,19 @@ const App: AppPage<Props> = ({ store, pageProps, Component }) => {
   return (
     <>
       <Head>
-        <title>typescript-react-nextjs-redux-starter</title>
+        <title>Post Finder</title>
       </Head>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Provider store={store}>
+          <PersistGate
+            loading={<div>Loading...</div>}
+            persistor={store.persistor}
+          >
+            <Component {...pageProps} />
+          </PersistGate>
+        </Provider>
+      </ThemeProvider>
     </>
   );
 };

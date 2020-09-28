@@ -6,3 +6,7 @@ export const todoRegisterAction = (content: string) => ({
 });
 
 export const todoAchieveAction = () => ({ type: ETodoType.TODO_ACHIEVE_REQUEST });
+
+export const todoLoad = () => ({
+  type: ETodoType.TODO_LOAD_REQUEST,
+});

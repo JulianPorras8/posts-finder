@@ -19,8 +19,15 @@ app
     server.get('/detail/:id', (req, res) => app.render(req, res, '/detail', { id: req.params.id }));
 
     server.post('/posts', (_, res) => {
-      console.log(`server.post('/posts'`);
-      return res.send([{ name: 'Julian', lastname: 'Porras' }]);
+      return res.status(200).json({
+        message: 'Success insert content',
+        todoData: { id: 3, content: 'result.content' },
+      });
+    });
+
+    server.get('/todo', (_, res) => {
+      console.log(`server.post('/todo'`);
+      return res.status(200).json({ todoDatas: [{ id: 2, content: 'test content' }] });
     });
 
     server.get('*', (req, res) => handler(req, res));
