@@ -22,8 +22,6 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@redux/*": ["redux/*"],
-      "@containers/*": ["containers/*"],
-      "@constants/*": ["constants/*"],
       "@utils/*": ["utils/*"]
     }
   },

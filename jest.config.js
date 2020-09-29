@@ -26,8 +26,6 @@ module.exports = {
     "^@components/(.*)$": "<rootDir>/components/$1",
     "^@pages/(.*)$": "<rootDir>/pages/$1",
     "^@redux/(.*)$": "<rootDir>/redux/$1",
-    "^@containers/(.*)$": "<rootDir>/containers/$1",
-    "^@constants/(.*)$": "<rootDir>/constants/$1",
     "^@utils/(.*)$": "<rootDir>/utils/$1"
   },
   snapshotSerializers: ["enzyme-to-json/serializer"]

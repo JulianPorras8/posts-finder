@@ -4,7 +4,7 @@ import { Store } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
-import { AppInitialProps, AppProps, AppContext, Container } from 'next/app';
+import { AppInitialProps, AppProps, AppContext } from 'next/app';
 import Head from 'next/head';
 import { Persistor } from 'redux-persist';
 import { CssBaseline } from '@material-ui/core';
