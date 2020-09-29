@@ -42,6 +42,25 @@ npm install
 #run app 
 cd post-finder
 npm run dev
+</code>
+</pre>
+
+### RUN TEST
+
+<pre>
+<code>
+#run app 
+cd post-finder
+npm test
+</code>
+</pre>
+
+### PROD MODE
+<pre>
+<code>
+#run app 
+cd post-finder
+npm start
 
 </code>
 </pre>
