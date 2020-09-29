@@ -33,13 +33,12 @@ const filterPosts = (pageNumber: number, postsPerPage, items: IPost[]) => {
 
 export function PostList(props: Props) {
   const classes = useStyles();
-  // console.log('35 props.items', props.items.length);
+
   let posts = filterPosts(props.pageNumber, 5, props.items);
-  // console.log('37 posts', posts.length);
   posts = map(posts, (post) => {
     const postFound = find(props.postsInStore, (postInStore) => postInStore.id === post.id);
     if (postFound) {
-     return postFound;
+      return postFound;
     }
     return post;
   });

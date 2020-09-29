@@ -1,60 +1,56 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import { PersistConfig, persistReducer, persistStore } from 'redux-persist';
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+import { persistStore } from 'redux-persist';
 
 import rootReducer from './rootReducer';
 import rootSaga from './sagas';
 
-const configureStore = (preloadedState: any, params: any) => {
-  console.log('11 isServer', params.isServer);
-  console.log('12 preloadedState', preloadedState);
-  console.log('13 params', params);
-  const createNoopStorage = () => {
-    return {
-      getItem(_key) {
-        return Promise.resolve(null);
-      },
-      setItem(_key, value) {
-        return Promise.resolve(value);
-      },
-      removeItem(_key) {
-        return Promise.resolve();
-      },
-    };
-  };
-
-  const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
-
-  const persistConfig: PersistConfig<any> = {
-    key: 'root',
-    version: 1,
-    storage,
-    whitelist: ['posts'],
-  };
+const configureStore = (preloadedState) => {
+  let store;
 
   const sagaMiddleware = createSagaMiddleware();
   const middlewares: Middleware[] = [
     sagaMiddleware,
-    (store) => next => action => {
+    () => next => action => {
       next(action);
     },
   ];
   const composeEnhancers = composeWithDevTools({});
+
   const enhancer =
     process.env.NODE_ENV !== 'production'
       ? composeEnhancers(applyMiddleware(...middlewares))
       : compose(applyMiddleware(...middlewares));
 
+  const isClient = typeof window !== 'undefined';
 
-  const persistedReducer = persistReducer(persistConfig, rootReducer);
-  const store = createStore(persistedReducer, preloadedState, enhancer);
+  if (isClient) {
+    const { persistReducer } = require('redux-persist');
+    const storage = require('redux-persist/lib/storage').default;
 
-  const persistor = persistStore(store);
+    const persistConfig = {
+      key: 'root',
+      storage,
+      whitelist: ['posts'],
+    };
 
-  if (params.req || !params.isServer) { (store as any).sagaTask = sagaMiddleware.run(rootSaga); }
-  (store as any).persistor = persistor;
+    store = createStore(
+      persistReducer(persistConfig, rootReducer),
+      preloadedState,
+      enhancer,
+    );
+
+    store.__PERSISTOR = persistStore(store);
+  } else {
+    store = createStore(
+      rootReducer,
+      preloadedState,
+      enhancer,
+    );
+  }
+
+  store.sagaTask = sagaMiddleware.run(rootSaga);
 
   return store;
 };

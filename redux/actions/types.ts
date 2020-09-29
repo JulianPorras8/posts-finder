@@ -8,15 +8,3 @@ export const UPDATE_BODY = 'UPDATE_BODY';
 export const SET_POST = 'SET_POST';
 export const ACHIEVE_SET_POST = 'ACHIEVE_SET_POST';
 export const NEW_POST = 'NEW_POST';
-
-export const TOGGLE_SEARCH = 'TOGGLE_SEARCH';
-export const TOGGLE_SEARCH_INPUT = 'TOGGLE_SEARCH_INPUT';
-export const UPDATE_SEARCH_INPUT_TEXT = 'UPDATE_SEARCH_INPUT_TEXT';
-
-export const SHOW_DIALOG = 'SHOW_DIALOG';
-export const HIDE_DIALOG = 'HIDE_DIALOG';
-export const EDIT_POST = 'EDIT_POST';
-
-export const GET_ARTICLE = 'GET_ARTICLE';
-export const GET_ARTICLE_SUCCESS = 'GET_ARTICLE_SUCCESS';
-export const GET_ARTICLE_ERROR = 'GET_ARTICLE_ERROR';

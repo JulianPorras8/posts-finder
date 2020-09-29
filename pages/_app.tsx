@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Modules
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -7,10 +9,13 @@ import withReduxSaga from 'next-redux-saga';
 import { AppInitialProps, AppProps, AppContext } from 'next/app';
 import Head from 'next/head';
 import { Persistor } from 'redux-persist';
+
+// Material components
 import { CssBaseline } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
+// Store configuration
 import configureStore from '../redux/configureStore';
 import { TRootState } from '@redux/rootReducer';
 
@@ -32,7 +37,7 @@ const theme = createMuiTheme({
 });
 
 interface IStore extends Store<TRootState> {
-  persistor: Persistor;
+  __PERSISTOR: Persistor;
 }
 
 type Props = { store: IStore } & AppInitialProps & AppProps;
@@ -51,12 +56,12 @@ const App: AppPage<Props> = ({ store, pageProps, Component }) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Provider store={store}>
-          {typeof window !== 'undefined' && <PersistGate
+          <PersistGate
             loading={<div>Loading...</div>}
-            persistor={store.persistor}
+            persistor={store.__PERSISTOR}
           >
             <Component {...pageProps} />
-          </PersistGate>}
+          </PersistGate>
         </Provider>
       </ThemeProvider>
     </>
@@ -69,4 +74,3 @@ App.getInitialProps = async ({ Component, ctx }: AppContext) => {
   };
 };
 export default withRedux(configureStore)(withReduxSaga(App));
-
