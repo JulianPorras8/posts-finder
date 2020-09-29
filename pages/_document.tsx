@@ -34,16 +34,16 @@ const global = css`
 export default class MyDocument extends Document {
   public render() {
     return (
-      <html lang="en">
+      <html lang='en'>
         <Global styles={global} />
         <Head>
-          <meta charSet="utf-8" key="charSet" />
+          <meta charSet='utf-8' key='charSet' />
           <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-            key="viewport"
+            name='viewport'
+            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+            key='viewport'
           />
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+          <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'></link>
         </Head>
         <body>
           <Main />

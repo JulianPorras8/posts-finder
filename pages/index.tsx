@@ -7,26 +7,45 @@ import { Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 // Modules
+import { useDispatch } from 'react-redux';
 import { NextJSContext } from 'next-redux-wrapper';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // Components
 import { SearchInput } from '../components/SearchInput';
+import { PostDialog } from '../components/Dialog';
+import { PostList } from '../components/PostList';
 
 // Actions
-import { ETodoType } from '@redux/reducers/todoType';
+import { GET_POSTS, SET_POST } from '@redux/actions/types';
 
 const Index = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm')
   );
 
-  const todoDatas = useSelector((state: RootState) => state.todo.todoDatas);
+  const [open, setOpen] = React.useState(false);
+  const {
+    items,
+    selectedPost,
+    pageNumber,
+    pageInStore,
+  } = useSelector<RootState, IPostState>((state) => state.posts);
 
-  console.log('29 todoDatas', todoDatas);
+  const handleClickOpen = (post: IPost | null) => {
+    dispatch({ type: SET_POST, payload: post });
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    dispatch({ type: SET_POST, payload: null });
+    setOpen(false);
+  };
+  console.log('53 items', items);
 
   return (
     <Router>
@@ -43,13 +62,21 @@ const Index = () => {
               </Typography>
             </Toolbar>
           </AppBar>
+          <PostDialog onClose={handleClose} open={open} post={selectedPost} />
           <div className={classes.content}>
             <Grid container className={classes.root}>
               <Grid container justify={'center'}>
                 <SearchInput
+                  items={items}
                 // showDetailButton={handleShowDetailButton}
                 // selectedIssue={handleSelectedIssue}
                 // issue={selectedIssue}
+                />
+                <PostList
+                  handleClickOpen={handleClickOpen}
+                  items={items}
+                  pageNumber={pageNumber}
+                  pageInStore={pageInStore}
                 />
               </Grid>
             </Grid>
@@ -61,10 +88,8 @@ const Index = () => {
 };
 
 Index.getInitialProps = async ({ store }: NextJSContext) => {
-  console.log('Index getInitialProps');
-  console.log('75 store', store);
   store.dispatch({
-    type: ETodoType.TODO_LOAD_REQUEST,
+    type: GET_POSTS,
   });
 
   return {};

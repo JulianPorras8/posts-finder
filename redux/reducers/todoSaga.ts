@@ -34,7 +34,6 @@ function* watchTodoRegister() {
 const todoLoadRequest = async () => await axios.get('/todo/');
 
 function* todoLoad() {
-  console.log('todoLoad ###');
   try {
     const result = yield call(todoLoadRequest);
     if (result.status === 200) {

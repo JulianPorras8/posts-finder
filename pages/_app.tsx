@@ -17,15 +17,15 @@ import { TRootState } from '@redux/rootReducer';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#e5e5e5',
-      main: '#727272',
-      dark: '#363839',
+      light: '#6573c3',
+      main: '#3f51b5',
+      dark: '#2c387e',
       contrastText: '#fff',
     },
     secondary: {
-      light: '#ff5e50',
-      main: '#e41e26',
-      dark: '#a90000',
+      light: '#f73378',
+      main: '#f50057',
+      dark: '#ab003c',
       contrastText: '#fff',
     },
   },

@@ -24,7 +24,7 @@
       }
     ],
     "variable-name": [
-      true,
+      false,
       "allow-snake-case"
     ],
     "use-default-type-parameter": true,

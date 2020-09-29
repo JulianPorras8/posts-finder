@@ -18,16 +18,53 @@ app
 
     server.get('/detail/:id', (req, res) => app.render(req, res, '/detail', { id: req.params.id }));
 
-    server.post('/posts', (_, res) => {
-      return res.status(200).json({
-        message: 'Success insert content',
-        todoData: { id: 3, content: 'result.content' },
-      });
-    });
-
-    server.get('/todo', (_, res) => {
-      console.log(`server.post('/todo'`);
-      return res.status(200).json({ todoDatas: [{ id: 2, content: 'test content' }] });
+    server.get('/posts', (_, res) => {
+      return res.status(200).json([{
+        id: 1,
+        userId: 1,
+        title: 'test 1',
+        body: 'post Body 1',
+      }, {
+        id: 2,
+        userId: 1,
+        title: 'test 2',
+        body: 'post Body 2',
+      }, {
+        id: 3,
+        userId: 1,
+        title: 'test 3',
+        body: 'post Body 3',
+      },{
+        id: 4,
+        userId: 2,
+        title: 'test 4',
+        body: 'post Body 4',
+      }, {
+        id: 5,
+        userId: 1,
+        title: 'test 5',
+        body: 'post Body 5',
+      }, {
+        id: 6,
+        userId: 2,
+        title: 'test 6',
+        body: 'post Body 6',
+      },{
+        id: 7,
+        userId: 2,
+        title: 'test 7',
+        body: 'post Body 7',
+      }, {
+        id: 8,
+        userId: 3,
+        title: 'test 8',
+        body: 'post Body 8',
+      }, {
+        id: 9,
+        userId: 3,
+        title: 'test 9',
+        body: 'post Body 9',
+      }]);
     });
 
     server.get('*', (req, res) => handler(req, res));

@@ -2,7 +2,7 @@ import {
   GET_ARTICLE,
   GET_ARTICLE_SUCCESS,
   GET_ARTICLE_ERROR,
-} from '../actions/types';
+} from '../../actions/types';
 
 export const initialState = {
   isLoading: false,
@@ -15,7 +15,7 @@ export const initialState = {
   body: '',
 };
 
-export default function articleReducer(state = initialState, action = {}) {
+export default function articleReducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case GET_ARTICLE:
       return { ...state, isLoading: true, nextPostId: action.payload };

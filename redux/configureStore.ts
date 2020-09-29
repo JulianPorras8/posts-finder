@@ -5,7 +5,7 @@ import { PersistConfig, persistReducer, persistStore } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
 import rootReducer from './rootReducer';
-import rootSaga from './rootSaga';
+import rootSaga from './sagas';
 
 const configureStore = (preloadedState: any, { isServer, req = null }: any) => {
 

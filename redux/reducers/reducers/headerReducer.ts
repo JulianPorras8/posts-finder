@@ -2,9 +2,9 @@ import {
   TOGGLE_SEARCH,
   TOGGLE_SEARCH_INPUT,
   UPDATE_SEARCH_INPUT_TEXT,
-} from '../actions/types';
+} from '../../actions/types';
 
-import config from '../config'
+import config from '../../config';
 
 export const initialState = {
   title: config.blogTitle,
@@ -13,7 +13,7 @@ export const initialState = {
   searchInputText: '',
 };
 
-export default function headerReducer(state = initialState, action = {}) {
+export default function headerReducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case TOGGLE_SEARCH:
       return {

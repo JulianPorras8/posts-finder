@@ -1,4 +1,4 @@
-import { SHOW_DIALOG, HIDE_DIALOG, EDIT_POST } from '../actions/types';
+import { SHOW_DIALOG, HIDE_DIALOG, EDIT_POST } from '../../actions/types';
 
 export const initialState = {
   isOpen: false,
@@ -7,7 +7,7 @@ export const initialState = {
   body: '',
 };
 
-export default function editFormReducer(state = initialState, action = {}) {
+export default function editFormReducer(state = initialState, action: any = {}) {
   switch (action.type) {
     case SHOW_DIALOG:
       return {

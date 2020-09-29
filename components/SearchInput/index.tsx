@@ -14,44 +14,17 @@ import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 import map from 'lodash/map';
 
-// Actions
-// import { useActions } from '../actions';
-// import * as  IssuesActions from '../actions/issue';
-
 interface Props {
-  issue?: any | null;
+  items: IPost[];
   selectedIssue?: (issue: any | null) => void;
   showDetailButton?: (value: boolean) => void;
 }
 
 export function SearchInput(props: Props) {
   const classes = useStyles();
-//   console.log('useSelector', useSelector);
   const [open, setOpen] = React.useState(false);
-  // const { issuesList, filters } = useSelector((state: any) => state.issues);
-  // const issuesActions = useActions(IssuesActions);
 
-  const loading = true;
-
-  React.useEffect(() => {
-    let active = true;
-
-    if (!loading) {
-      return undefined;
-    }
-    // Get issues according with filters selected on Filters Component
-    // issuesActions.get_issues(filters.owner, filters.name, filters.status);
-
-    return () => {
-      active = false;
-    };
-  }, [loading]);
-
-  React.useEffect(() => {
-    if (!open) {
-      // issuesActions.set_issues([]);
-    }
-  }, [open]);
+  const { isLoading } = useSelector<RootState, IPostState>((state) => state.posts);
 
   return (
     <Autocomplete
@@ -62,7 +35,6 @@ export function SearchInput(props: Props) {
       onOpen={() => {
         setOpen(true);
         // props.showDetailButton(false);
-
       }}
       onClose={() => {
         setOpen(false);
@@ -77,8 +49,8 @@ export function SearchInput(props: Props) {
       }}
       getOptionSelected={(option, value) => option.databaseId === value.databaseId}
       getOptionLabel={(option) => option.title}
-      options={[]}
-      loading={loading}
+      options={props.items}
+      loading={isLoading}
       renderOption={(option) => (
         <React.Fragment key={option.databaseId}>
           <span>
@@ -107,7 +79,7 @@ export function SearchInput(props: Props) {
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
-                {loading ? <CircularProgress color='inherit' size={20} /> : null}
+                {isLoading ? <CircularProgress color='inherit' size={20} /> : null}
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),
