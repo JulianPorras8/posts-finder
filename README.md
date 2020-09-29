@@ -11,6 +11,8 @@ of all the posts fetched from the API. The site has the following features:
 - Pagination
 - Responsive Design
 
+![](example.gif)
+
 ## Contains
 
 -   [x] [Material-UI](https://github.com/mui-org/material-ui)
