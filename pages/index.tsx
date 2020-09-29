@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 
 // Material Components
 import { AppBar, Toolbar, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 
 // Modules
 import { useDispatch } from 'react-redux';
@@ -18,7 +20,7 @@ import { PostDialog } from '../components/Dialog';
 import { PostList } from '../components/PostList';
 
 // Actions
-import { GET_POSTS, SET_POST } from '@redux/actions/types';
+import { GET_POSTS, SET_POST, CHANGE_PAGE, CLOSE_ERROR, SET_PRESELECTED_POST } from '@redux/actions/types';
 
 const Index = () => {
   const classes = useStyles();
@@ -29,12 +31,19 @@ const Index = () => {
   );
 
   const [open, setOpen] = React.useState(false);
+
   const {
     items,
     selectedPost,
     pageNumber,
     postsInStore,
+    error,
+    preSelectedPost,
   } = useSelector<RootState, IPostState>((state) => state.posts);
+
+  const handleErrorClose = () => {
+    dispatch({ type: CLOSE_ERROR });
+  };
 
   const handleClickOpen = (post: IPost | null) => {
     dispatch({ type: SET_POST, payload: post });
@@ -45,11 +54,19 @@ const Index = () => {
     dispatch({ type: SET_POST, payload: null });
     setOpen(false);
   };
-  console.log('53 items', items);
+
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
+    dispatch({ type: CHANGE_PAGE, payload: value });
+  };
+
+  const onPreSelectPost = (post: IPost) => {
+    dispatch({ type: SET_PRESELECTED_POST, payload: post });
+  };
 
   return (
     <Router>
       <div className={classes.root}>
+        <PostDialog onClose={handleClose} open={open} post={selectedPost} />
         <div className={classes.appFrame}>
           <AppBar className={classes.appBar}>
             <Toolbar>
@@ -62,26 +79,36 @@ const Index = () => {
               </Typography>
             </Toolbar>
           </AppBar>
-          <PostDialog onClose={handleClose} open={open} post={selectedPost} />
           <div className={classes.content}>
-            <Grid container className={classes.root}>
+            <Grid container className={classes.pageContent}>
               <Grid container justify={'center'}>
-                <SearchInput
-                  items={items}
-                // showDetailButton={handleShowDetailButton}
-                // selectedIssue={handleSelectedIssue}
-                // issue={selectedIssue}
-                />
-                <PostList
-                  onClickOpen={handleClickOpen}
-                  items={items}
-                  pageNumber={pageNumber}
-                  postsInStore={postsInStore}
-                />
+                <Grid item md={6}>
+                  <Grid container justify={'center'}>
+                    <Grid item xs={12}>
+                      <SearchInput
+                        items={items}
+                        onPreSelectPost={onPreSelectPost}
+                      />
+                    </Grid>
+                  </Grid>
+                  <PostList
+                    onClickOpen={handleClickOpen}
+                    items={items}
+                    pageNumber={pageNumber}
+                    postsInStore={postsInStore}
+                    handlePageChange={handlePageChange}
+                    preSelectedPost={preSelectedPost}
+                  />
+                </Grid>
               </Grid>
             </Grid>
           </div>
         </div>
+        <Snackbar open={!!error} autoHideDuration={6000} onClose={handleErrorClose}>
+          <Alert onClose={handleErrorClose} severity='error'>
+            {error}
+          </Alert>
+        </Snackbar>
       </div>
     </Router>
   );
@@ -125,6 +152,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.up('sm')]: {
       height: 'calc(100% - 64px)',
       marginTop: 64,
+    },
+  },
+  pageContent: {
+    padding: 20,
+    [theme.breakpoints.down('md')]: {
+      paddingTop: 50,
+      paddingLeft: 15,
+      paddingRight: 15,
     },
   },
 }));

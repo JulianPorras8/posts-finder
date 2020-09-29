@@ -40,7 +40,6 @@ export function PostDialog(props: Props) {
   if (!props.post) {
     return null;
   }
-  console.log('43 post', props.post);
   const onTitleChange = (post: IPost, title: string) => {
     dispatch({
       type: UPDATE_TITLE,

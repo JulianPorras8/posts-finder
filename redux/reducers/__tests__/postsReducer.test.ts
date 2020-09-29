@@ -7,26 +7,22 @@ import {
 } from '../../actions/types';
 
 describe('Posts Reducer', () => {
-  const MOCK_POST_LIST = [
-    {
-      id: 1,
-      userId: 1,
-      title: 'test 1',
-      body: 'post Body 1',
-    },
-    {
-      id: 2,
-      userId: 1,
-      title: 'test 2',
-      body: 'post Body 2',
-    },
-    {
-      id: 3,
-      userId: 1,
-      title: 'test 3',
-      body: 'post Body 3',
-    },
-  ];
+  const MOCK_POST_LIST = [{
+    id: 1,
+    userId: 1,
+    title: 'test 1',
+    body: 'post Body 1',
+  }, {
+    id: 2,
+    userId: 1,
+    title: 'test 2',
+    body: 'post Body 2',
+  }, {
+    id: 3,
+    userId: 1,
+    title: 'test 3',
+    body: 'post Body 3',
+  }];
 
   const MOCK_POST_ITEM = {
     id: 3,
@@ -47,6 +43,10 @@ describe('Posts Reducer', () => {
       isLoading: false,
       error: '',
       pageNumber: 1,
+      posts: [],
+      postsInStore: [],
+      preSelectedPost: null,
+      selectedPost: null,
     });
   });
 
@@ -59,6 +59,10 @@ describe('Posts Reducer', () => {
       isLoading: false,
       error: 'Not Found',
       pageNumber: 1,
+      posts: [],
+      postsInStore: [],
+      preSelectedPost: null,
+      selectedPost: null,
     });
   });
 
@@ -71,6 +75,10 @@ describe('Posts Reducer', () => {
       isLoading: false,
       error: '',
       pageNumber: 5,
+      posts: [],
+      postsInStore: [],
+      preSelectedPost: null,
+      selectedPost: null,
     });
   });
 
@@ -83,26 +91,27 @@ describe('Posts Reducer', () => {
       payload: MOCK_POST_ITEM,
     })).toEqual({
       ...initialState,
-      items: [
-        {
-          id: 1,
-          userId: 1,
-          title: 'test 1',
-          body: 'post Body 1',
-        },
-        {
-          id: 2,
-          userId: 1,
-          title: 'test 2',
-          body: 'post Body 2',
-        },
-        {
-          id: 3,
-          userId: 1,
-          title: 'test title',
-          body: 'test post',
-        },
-      ],
+      postsInStore: [{
+        body: 'test post',
+        id: 3,
+        title: 'test title',
+      }],
+      items: [{
+        id: 1,
+        userId: 1,
+        title: 'test 1',
+        body: 'post Body 1',
+      }, {
+        id: 2,
+        userId: 1,
+        title: 'test 2',
+        body: 'post Body 2',
+      }, {
+        id: 3,
+        userId: 1,
+        title: 'test 3',
+        body: 'post Body 3',
+      }],
     });
   });
 });

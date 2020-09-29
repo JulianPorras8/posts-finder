@@ -1,13 +1,27 @@
-import { put, takeLatest } from 'redux-saga/effects';
-
+import { put, takeLatest, call } from 'redux-saga/effects';
 import {
+  ACHIEVE_SET_POST,
+  CHANGE_PAGE,
+  GET_POSTS,
+  NEW_POST,
+  SET_POST,
+  UPDATE_BODY,
+  UPDATE_PAGE_NUMBER,
   UPDATE_POST,
   UPDATE_TITLE,
-  UPDATE_BODY,
-  SET_POST,
-  ACHIEVE_SET_POST,
-  NEW_POST,
 } from '../actions/types';
+
+import { fetchPostsApi } from '../api';
+import { getPostsSuccess, getPostsError } from '../actions/postsAction';
+
+export function* getPosts() {
+  try {
+    const postData = yield call(fetchPostsApi);
+    yield put(getPostsSuccess(postData));
+  } catch (error) {
+    yield put(getPostsError(error.toString()));
+  }
+}
 
 function* updatePost(action) {
   yield put({
@@ -21,6 +35,17 @@ function* setPost(action) {
     type: ACHIEVE_SET_POST,
     payload: action.payload,
   });
+}
+
+function* setPage(action) {
+  yield put({
+    type: UPDATE_PAGE_NUMBER,
+    payload: action.payload,
+  });
+}
+
+export function* watchGetPosts() {
+  yield takeLatest(GET_POSTS, getPosts);
 }
 
 export function* watchUpdateBody() {
@@ -37,4 +62,8 @@ export function* watchSetPost() {
 
 export function* watchNewPost() {
   yield takeLatest(NEW_POST, updatePost);
+}
+
+export function* watchChangePage() {
+  yield takeLatest(CHANGE_PAGE, setPage);
 }

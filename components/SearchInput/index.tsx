@@ -4,20 +4,17 @@ import * as React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Chip from '@material-ui/core/Chip';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import TextField from '@material-ui/core/TextField';
+import Avatar from '@material-ui/core/Avatar';
+import Person from '@material-ui/icons/Person';
 
 // Modules
 import { useSelector } from 'react-redux';
-import map from 'lodash/map';
 
 interface Props {
   items: IPost[];
-  selectedIssue?: (issue: any | null) => void;
-  showDetailButton?: (value: boolean) => void;
+  onPreSelectPost?: (post: IPost | null) => void;
 }
 
 export function SearchInput(props: Props) {
@@ -34,46 +31,37 @@ export function SearchInput(props: Props) {
       open={open}
       onOpen={() => {
         setOpen(true);
-        // props.showDetailButton(false);
       }}
       onClose={() => {
         setOpen(false);
       }}
       onChange={(_, value: any | null, reason: string) => {
-        // props.selectedIssue(value);
         if (reason === 'select-option') {
-          // props.showDetailButton(true);
+          props.onPreSelectPost(value);
         } else if (reason === 'clear') {
-          // props.showDetailButton(false);
+          props.onPreSelectPost(null);
         }
       }}
-      getOptionSelected={(option, value) => option.databaseId === value.databaseId}
+      getOptionSelected={(option, value) => option.id === value.id}
       getOptionLabel={(option) => option.title}
       options={props.items}
       loading={isLoading}
       renderOption={(option) => (
-        <React.Fragment key={option.databaseId}>
-          <span>
-            {option.state === 'OPEN' && <ErrorOutlineIcon style={{ color: '#28a745' }} />}
-            {option.state === 'CLOSED' && <HighlightOffIcon style={{ color: '#cb2431' }} />}
-          </span>
+        <React.Fragment key={option.id}>
+          <div className={classes.option}>
+            <span className={classes.avatar}>
+              <Avatar>
+                <Person />
+              </Avatar>
+            </span>
+          </div>
           {option.title}
-          <span>
-            {map(option.labels, (label, index) => {
-              return (
-                <Chip key={index}
-                  label={label.name}
-                  className={classes.chip}
-                />
-              );
-            })}
-          </span>
         </React.Fragment>
       )}
       renderInput={(params) => (
         <TextField
           {...params}
-          label='Issue'
+          label='Post'
           variant='outlined'
           InputProps={{
             ...params.InputProps,
@@ -94,11 +82,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   buttonContainer: {
     margin: theme.spacing(2),
   },
-  chip: {
-    margin: theme.spacing(0.5),
+  option: {
+    margin: theme.spacing(1),
+  },
+  avatar: {
+    marginRight: theme.spacing(0.5),
   },
   searchControl: {
-    margin: theme.spacing(1),
+    marginBottom: theme.spacing(1),
     width: '100%',
   },
 }));

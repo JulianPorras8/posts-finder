@@ -9,6 +9,7 @@ interface IPostState {
   isLoading: boolean,
   items: IPost[],
   selectedPost: IPost | null,
+  preSelectedPost: IPost | null,
   error: string,
   pageNumber: 1,
   posts: IPost[],

@@ -1,11 +1,13 @@
 import {
-  GET_POSTS,
-  GET_POSTS_SUCCESS,
-  GET_POSTS_ERROR,
-  UPDATE_POST,
-  UPDATE_PAGE_NUMBER,
   ACHIEVE_SET_POST,
-} from '../../actions/types';
+  CLOSE_ERROR,
+  GET_POSTS_ERROR,
+  GET_POSTS_SUCCESS,
+  GET_POSTS,
+  SET_PRESELECTED_POST,
+  UPDATE_PAGE_NUMBER,
+  UPDATE_POST,
+} from '../actions/types';
 
 export const initialState: IPostState = {
   isLoading: false,
@@ -14,6 +16,7 @@ export const initialState: IPostState = {
   pageNumber: 1,
   posts: [],
   selectedPost: null,
+  preSelectedPost: null,
   postsInStore: [],
 };
 
@@ -41,8 +44,15 @@ export default function postReducer(state = initialState, action: any = {}) {
         ...state,
         selectedPost: action.payload,
       };
+    case SET_PRESELECTED_POST:
+      return {
+        ...state,
+        preSelectedPost: action.payload,
+      };
     case UPDATE_PAGE_NUMBER:
       return { ...state, pageNumber: action.payload };
+    case CLOSE_ERROR:
+      return { ...state, error: '' };
     default:
       return state;
   }
