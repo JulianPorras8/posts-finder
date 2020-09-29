@@ -14,7 +14,7 @@ export const initialState: IPostState = {
   pageNumber: 1,
   posts: [],
   selectedPost: null,
-  pageInStore: [],
+  postsInStore: [],
 };
 
 export default function postReducer(state = initialState, action: any = {}) {
@@ -31,21 +31,15 @@ export default function postReducer(state = initialState, action: any = {}) {
     case GET_POSTS_ERROR:
       return { ...state, error: action.payload, isLoading: false };
     case UPDATE_POST:
+      return {
+        ...state,
+        postsInStore: state.postsInStore.concat([action.payload]),
+        selectedPost: null,
+      };
     case ACHIEVE_SET_POST:
       return {
         ...state,
         selectedPost: action.payload,
-        // items: state.items.map((item) => {
-        //   console.log('34 item', item);
-        //   console.log('35 action.payload', action.payload);
-        //   if (item.id === action.payload.id) {
-        //     return {
-        //       ...item,
-        //       ...action.payload,
-        //     };
-        //   }
-        //   return item;
-        // }),
       };
     case UPDATE_PAGE_NUMBER:
       return { ...state, pageNumber: action.payload };

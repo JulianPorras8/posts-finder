@@ -7,6 +7,7 @@ export const UPDATE_TITLE = 'UPDATE_TITLE';
 export const UPDATE_BODY = 'UPDATE_BODY';
 export const SET_POST = 'SET_POST';
 export const ACHIEVE_SET_POST = 'ACHIEVE_SET_POST';
+export const NEW_POST = 'NEW_POST';
 
 export const TOGGLE_SEARCH = 'TOGGLE_SEARCH';
 export const TOGGLE_SEARCH_INPUT = 'TOGGLE_SEARCH_INPUT';

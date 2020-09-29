@@ -7,8 +7,10 @@ import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import rootReducer from './rootReducer';
 import rootSaga from './sagas';
 
-const configureStore = (preloadedState: any, { isServer, req = null }: any) => {
-
+const configureStore = (preloadedState: any, params: any) => {
+  console.log('11 isServer', params.isServer);
+  console.log('12 preloadedState', preloadedState);
+  console.log('13 params', params);
   const createNoopStorage = () => {
     return {
       getItem(_key) {
@@ -29,6 +31,7 @@ const configureStore = (preloadedState: any, { isServer, req = null }: any) => {
     key: 'root',
     version: 1,
     storage,
+    whitelist: ['posts'],
   };
 
   const sagaMiddleware = createSagaMiddleware();
@@ -50,7 +53,7 @@ const configureStore = (preloadedState: any, { isServer, req = null }: any) => {
 
   const persistor = persistStore(store);
 
-  if (req || !isServer) { (store as any).sagaTask = sagaMiddleware.run(rootSaga); }
+  if (params.req || !params.isServer) { (store as any).sagaTask = sagaMiddleware.run(rootSaga); }
   (store as any).persistor = persistor;
 
   return store;

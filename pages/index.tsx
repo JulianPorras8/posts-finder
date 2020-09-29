@@ -33,7 +33,7 @@ const Index = () => {
     items,
     selectedPost,
     pageNumber,
-    pageInStore,
+    postsInStore,
   } = useSelector<RootState, IPostState>((state) => state.posts);
 
   const handleClickOpen = (post: IPost | null) => {
@@ -73,10 +73,10 @@ const Index = () => {
                 // issue={selectedIssue}
                 />
                 <PostList
-                  handleClickOpen={handleClickOpen}
+                  onClickOpen={handleClickOpen}
                   items={items}
                   pageNumber={pageNumber}
-                  pageInStore={pageInStore}
+                  postsInStore={postsInStore}
                 />
               </Grid>
             </Grid>

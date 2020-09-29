@@ -16,12 +16,13 @@ import Visibility from '@material-ui/icons/Visibility';
 
 // Modules
 import map from 'lodash/map';
+import find from 'lodash/find';
 
 interface Props {
-  handleClickOpen: (IPost: IPost) => void;
   items: IPost[];
   pageNumber: number;
-  pageInStore: number[];
+  onClickOpen: (IPost: IPost) => void;
+  postsInStore: IPost[];
 }
 
 const filterPosts = (pageNumber: number, postsPerPage, items: IPost[]) => {
@@ -32,12 +33,16 @@ const filterPosts = (pageNumber: number, postsPerPage, items: IPost[]) => {
 
 export function PostList(props: Props) {
   const classes = useStyles();
-  console.log('35 props.items', props.items.length);
-  const posts = filterPosts(props.pageNumber, 5, props.items);
-  console.log('37 posts', posts.length);
-  if (props.pageInStore.indexOf(props.pageNumber) === -1) {
-    
-  }
+  // console.log('35 props.items', props.items.length);
+  let posts = filterPosts(props.pageNumber, 5, props.items);
+  // console.log('37 posts', posts.length);
+  posts = map(posts, (post) => {
+    const postFound = find(props.postsInStore, (postInStore) => postInStore.id === post.id);
+    if (postFound) {
+     return postFound;
+    }
+    return post;
+  });
 
   return (
     <List className={classes.list}>
@@ -54,7 +59,7 @@ export function PostList(props: Props) {
               secondary={item.body}
             />
             <ListItemSecondaryAction>
-              <IconButton edge='end' aria-label='delete' onClick={() => props.handleClickOpen(item)}>
+              <IconButton edge='end' aria-label='delete' onClick={() => props.onClickOpen(item)}>
                 <Visibility />
               </IconButton>
             </ListItemSecondaryAction>

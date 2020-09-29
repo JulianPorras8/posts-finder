@@ -17,7 +17,7 @@ import TextField from '@material-ui/core/TextField';
 import { useDispatch } from 'react-redux';
 
 // Actions
-import { UPDATE_BODY, UPDATE_TITLE } from '../../redux/actions/types';
+import { UPDATE_BODY, UPDATE_TITLE, NEW_POST } from '../../redux/actions/types';
 
 interface Props {
   post: IPost | null;
@@ -53,6 +53,14 @@ export function PostDialog(props: Props) {
       type: UPDATE_BODY,
       payload: { ...post, body },
     });
+  };
+
+  const onSave = () => {
+    dispatch({
+      type: NEW_POST,
+      payload: props.post,
+    });
+    props.onClose();
   };
 
   return (
@@ -95,6 +103,7 @@ export function PostDialog(props: Props) {
             size='small'
             className={classes.saveButton}
             startIcon={<SaveIcon />}
+            onClick={onSave}
           >
             Save
           </Button>

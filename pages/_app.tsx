@@ -51,12 +51,12 @@ const App: AppPage<Props> = ({ store, pageProps, Component }) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Provider store={store}>
-          <PersistGate
+          {typeof window !== 'undefined' && <PersistGate
             loading={<div>Loading...</div>}
             persistor={store.persistor}
           >
             <Component {...pageProps} />
-          </PersistGate>
+          </PersistGate>}
         </Provider>
       </ThemeProvider>
     </>

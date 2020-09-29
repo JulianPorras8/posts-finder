@@ -12,5 +12,5 @@ interface IPostState {
   error: string,
   pageNumber: 1,
   posts: IPost[],
-  pageInStore: number[];
+  postsInStore: IPost[];
 }
