@@ -41,7 +41,7 @@ npm install
 <code>
 #run app 
 cd post-finder
-npm test
+npm run dev
 </code>
 </pre>
 
@@ -51,7 +51,7 @@ npm test
 <code>
 #run app 
 cd post-finder
-npm run dev
+npm test
 </code>
 </pre>
 
