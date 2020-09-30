@@ -18,7 +18,7 @@ import { PostDialog } from '../components/Dialog';
 import { PostList } from '../components/PostList';
 
 // Actions
-import { GET_POSTS, SET_POST, CHANGE_PAGE, CLOSE_ERROR, SET_PRESELECTED_POST } from '../redux/actions/types';
+import { GET_POSTS, SET_POST, CHANGE_PAGE, CLOSE_ERROR, SET_PRESELECTED_POST } from '../actions/types';
 
 const Index = () => {
   const classes = useStyles();

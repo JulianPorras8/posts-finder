@@ -4,7 +4,7 @@ import {
   GET_POSTS_ERROR,
   UPDATE_POST,
   UPDATE_PAGE_NUMBER,
-} from '../../actions/types';
+} from '../../../actions/types';
 
 describe('Posts Reducer', () => {
   const MOCK_POST_LIST = [{

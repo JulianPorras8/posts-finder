@@ -21,7 +21,7 @@ import find from 'lodash/find';
 import { useDispatch } from 'react-redux';
 
 // Actions
-import { SET_PRESELECTED_POST } from '../../redux/actions/types';
+import { SET_PRESELECTED_POST } from '../../actions/types';
 
 // Constants
 const LIMIT = 10;

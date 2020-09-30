@@ -1,5 +1,6 @@
 import React from 'react';
-import Document, { Head, Main, NextScript, Html } from 'next/document';
+import Document, { Main, NextScript, Html, Head } from 'next/document';
+// import Head from 'next/head';
 import { css, Global } from '@emotion/core';
 
 const global = css`
@@ -38,11 +39,6 @@ export default class MyDocument extends Document {
         <Global styles={global} />
         <Head>
           <meta charSet='utf-8' key='charSet' />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
-            key='viewport'
-          />
           <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'></link>
         </Head>
         <body>

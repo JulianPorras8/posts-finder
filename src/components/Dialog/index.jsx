@@ -15,7 +15,7 @@ import TextField from '@material-ui/core/TextField';
 import { useDispatch } from 'react-redux';
 
 // Actions
-import { UPDATE_BODY, UPDATE_TITLE, NEW_POST } from '../../redux/actions/types';
+import { UPDATE_BODY, UPDATE_TITLE, NEW_POST } from '../../actions/types';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

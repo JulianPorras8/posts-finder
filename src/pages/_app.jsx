@@ -13,7 +13,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 // Store configuration
-import configureStore from '../redux/configureStore';
+import configureStore from '../store';
 
 const theme = createMuiTheme({
   palette: {
@@ -37,6 +37,11 @@ const App = ({ store, pageProps, Component }) => {
     <>
       <Head>
         <title>Post Finder</title>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+          key='viewport'
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

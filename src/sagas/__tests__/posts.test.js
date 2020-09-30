@@ -1,6 +1,6 @@
 import { runSaga } from 'redux-saga';
-import { GET_POSTS_SUCCESS, GET_POSTS_ERROR } from '../../actions/types';
-import * as api from '../../api';
+import { GET_POSTS_SUCCESS, GET_POSTS_ERROR } from '../../../actions/types';
+import * as api from '../../../api';
 import { getPosts } from '../posts';
 
 describe('getPosts', () => {

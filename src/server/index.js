@@ -20,7 +20,6 @@ app
     server.use('/public/', express.static(path.join(__dirname, '../public')));
 
     // App routes
-    console.log('23 routes', routes);
     server.use('/posts', routes);
 
     // NextJs Configuration
