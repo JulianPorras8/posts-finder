@@ -2,6 +2,9 @@ const next = require('next');
 const express = require('express');
 const path = require('path');
 
+// Config
+const config = require('../../config');
+
 // Routes
 const routes = require('./routes');
 
@@ -17,7 +20,7 @@ app
     // Express Configuration
     server.use(express.json());
     server.use(express.urlencoded({ extended: false }));
-    server.use('/public/', express.static(path.join(__dirname, '../public')));
+    server.use('/public/', express.static(path.join(__dirname, '../../public')));
 
     // App routes
     server.use('/posts', routes);
@@ -25,8 +28,10 @@ app
     // NextJs Configuration
     server.get('*', (req, res) => handler(req, res));
 
-    server.listen(3000, () => {
-      console.log('ready on http://localhost:3000');
+    const port = config.port;
+    console.log('32 port', port);
+    server.listen(port, () => {
+      console.log(`ready on http://localhost:${port}`);
     });
   })
   .catch(ex => {
