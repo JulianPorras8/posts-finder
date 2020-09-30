@@ -1,0 +1,12 @@
+FROM node:12.13.1-alpine
+
+ARG BACKEND_PORT
+ENV BACKEND_PORT=$BACKEND_PORT
+
+WORKDIR /app
+COPY . /app
+
+RUN npm install
+
+EXPOSE $BACKEND_PORT
+CMD npm start
