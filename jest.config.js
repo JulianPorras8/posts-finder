@@ -1,9 +1,5 @@
 module.exports = {
-  globals: {
-    "ts-jest": {
-      tsConfig: "tsconfig.jest.json"
-    }
-  },
+  coverageDirectory: 'coverage',
   preset: 'ts-jest',
   moduleFileExtensions: [
     "ts",
