@@ -1,28 +1,17 @@
 module.exports = {
   coverageDirectory: 'coverage',
-  preset: 'ts-jest',
   moduleFileExtensions: [
-    "ts",
-    "tsx",
+    "jsx",
     "js"
   ],
-  transform: {
-    "^.+\\.tsx?$": "ts-jest"
-  },
   testMatch: [
-    "**/*.(test|spec).(ts|tsx)"
+    "**/*.test.(js|jsx)"
   ],
+  transform: {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  },
   testEnvironment: 'node',
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "enzyme.js"
-  ],
-  setupFilesAfterEnv: ["./enzyme.js"],
-  moduleNameMapper: {
-    "^@components/(.*)$": "<rootDir>/components/$1",
-    "^@pages/(.*)$": "<rootDir>/pages/$1",
-    "^@redux/(.*)$": "<rootDir>/redux/$1",
-    "^@utils/(.*)$": "<rootDir>/utils/$1"
-  },
-  snapshotSerializers: ["enzyme-to-json/serializer"]
+  ]
 }

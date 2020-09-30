@@ -9,28 +9,13 @@ import Head from 'next/head';
 
 // Material components
 import { CssBaseline } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+
+// Theme
+import theme from '../theme';
 
 // Store configuration
 import configureStore from '../store';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#6573c3',
-      main: '#3f51b5',
-      dark: '#2c387e',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#f73378',
-      main: '#f50057',
-      dark: '#ab003c',
-      contrastText: '#fff',
-    },
-  },
-});
 
 const App = ({ store, pageProps, Component }) => {
   return (

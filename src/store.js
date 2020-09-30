@@ -10,12 +10,7 @@ const configureStore = (preloadedState) => {
   let store;
 
   const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [
-    sagaMiddleware,
-    () => next => action => {
-      next(action);
-    },
-  ];
+  const middlewares = [sagaMiddleware];
   const composeEnhancers = composeWithDevTools({});
 
   const enhancer =

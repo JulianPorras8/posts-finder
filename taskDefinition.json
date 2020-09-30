@@ -1,0 +1,179 @@
+{
+  "family": "",
+  "taskRoleArn": "",
+  "executionRoleArn": "",
+  "networkMode": "host",
+  "containerDefinitions": [
+    {
+      "name": "",
+      "image": "",
+      "repositoryCredentials": {
+        "credentialsParameter": ""
+      },
+      "cpu": 0,
+      "memory": 0,
+      "memoryReservation": 0,
+      "links": [
+        ""
+      ],
+      "portMappings": [
+        {
+          "containerPort": 0,
+          "hostPort": 0,
+          "protocol": "udp"
+        }
+      ],
+      "essential": true,
+      "entryPoint": [
+        ""
+      ],
+      "command": [
+        ""
+      ],
+      "environment": [
+        {
+          "name": "",
+          "value": ""
+        }
+      ],
+      "startTimeout": 0,
+      "stopTimeout": 0,
+      "hostname": "",
+      "user": "",
+      "workingDirectory": "",
+      "disableNetworking": true,
+      "privileged": true,
+      "readonlyRootFilesystem": true,
+      "dnsServers": [
+        ""
+      ],
+      "dnsSearchDomains": [
+        ""
+      ],
+      "extraHosts": [
+        {
+          "hostname": "",
+          "ipAddress": ""
+        }
+      ],
+      "dockerSecurityOptions": [
+        ""
+      ],
+      "interactive": true,
+      "pseudoTerminal": true,
+      "dockerLabels": {
+        "KeyName": ""
+      },
+      "ulimits": [
+        {
+          "name": "core",
+          "softLimit": 0,
+          "hardLimit": 0
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "journald",
+        "options": {
+          "KeyName": ""
+        },
+        "secretOptions": [
+          {
+            "name": "",
+            "valueFrom": ""
+          }
+        ]
+      },
+      "healthCheck": {
+        "command": [
+          ""
+        ],
+        "interval": 0,
+        "timeout": 0,
+        "retries": 0,
+        "startPeriod": 0
+      },
+      "systemControls": [
+        {
+          "namespace": "",
+          "value": ""
+        }
+      ],
+      "resourceRequirements": [
+        {
+          "value": "",
+          "type": "InferenceAccelerator"
+        }
+      ],
+      "firelensConfiguration": {
+        "type": "fluentd",
+        "options": {
+          "KeyName": ""
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "",
+      "host": {
+        "sourcePath": ""
+      },
+      "dockerVolumeConfiguration": {
+        "scope": "task",
+        "autoprovision": true,
+        "driver": "",
+        "driverOpts": {
+          "KeyName": ""
+        },
+        "labels": {
+          "KeyName": ""
+        }
+      },
+      "efsVolumeConfiguration": {
+        "fileSystemId": "",
+        "rootDirectory": "",
+        "transitEncryption": "ENABLED",
+        "transitEncryptionPort": 0,
+        "authorizationConfig": {
+          "accessPointId": "",
+          "iam": "ENABLED"
+        }
+      }
+    }
+  ],
+  "placementConstraints": [
+    {
+      "type": "memberOf",
+      "expression": ""
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "",
+  "memory": "",
+  "tags": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "pidMode": "task",
+  "ipcMode": "host",
+  "proxyConfiguration": {
+    "type": "APPMESH",
+    "containerName": "",
+    "properties": [
+      {
+        "name": "",
+        "value": ""
+      }
+    ]
+  },
+  "inferenceAccelerators": [
+    {
+      "deviceName": "",
+      "deviceType": ""
+    }
+  ]
+}
