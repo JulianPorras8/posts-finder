@@ -57,18 +57,10 @@ jobs:
         ECR_REPOSITORY: avantica
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        # apk add --update --no-cache python3-dev py3-pip python3
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        # mkdir ~/.aws
-        # touch ~/.aws/credentials
-        # echo "[default]" >> ~/.aws/credentials
-        # echo "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }} >> ~/.aws/credentials
-        # echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }} >> ~/.aws/credentials
-        # aws ecr get-login --profile default --no-include-email --region $AWS_REGION | sh
-        # sleep 30
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
