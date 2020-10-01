@@ -25,7 +25,6 @@ const initialState = {
     error: '',
     pageNumber: 1,
     posts: [],
-    postsInStore: [],
     preSelectedPost: null,
     selectedPost: null,
   }

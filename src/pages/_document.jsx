@@ -16,12 +16,6 @@ const global = css`
   #__next {
   }
 
-  section,
-  article,
-  div {
-    display: grid;
-  }
-
   a {
     color: inherit;
     text-decoration: none;
