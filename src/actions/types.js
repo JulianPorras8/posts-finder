@@ -1,0 +1,13 @@
+export const GET_POSTS = 'GET_POSTS';
+export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
+export const GET_POSTS_ERROR = 'GET_POSTS_ERROR';
+export const UPDATE_POST = 'UPDATE_POST';
+export const UPDATE_PAGE_NUMBER = 'UPDATE_PAGE_NUMBER';
+export const UPDATE_TITLE = 'UPDATE_TITLE';
+export const UPDATE_BODY = 'UPDATE_BODY';
+export const SET_POST = 'SET_POST';
+export const ACHIEVE_SET_POST = 'ACHIEVE_SET_POST';
+export const SET_PRESELECTED_POST = 'SET_PRESELECTED_POST';
+export const NEW_POST = 'NEW_POST';
+export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const CLOSE_ERROR = 'CLOSE_ERROR';
