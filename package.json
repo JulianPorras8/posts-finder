@@ -7,6 +7,7 @@
     "dev": "nodemon -w src/server src/server/index.js",
     "test": "jest --watch --detectOpenHandles",
     "test:ci": "jest --ci --detectOpenHandles",
+    "test:cov": "jest --coverage",
     "build": "next build"
   },
   "author": "Julian Porras <JulianPorras8>",
@@ -38,11 +39,13 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "11.0.4",
+    "@testing-library/user-event": "^12.1.6",
     "babel-jest": "26.3.0",
     "babel-preset-env": "1.7.0",
     "jest": "26.4.2",
     "jsdom": "15.2.1",
     "nodemon": "1.19.1",
-    "redux-mock-store": "1.5.4"
+    "redux-mock-store": "1.5.4",
+    "supertest": "^5.0.0"
   }
 }

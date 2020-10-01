@@ -17,7 +17,15 @@ import theme from '../theme';
 // Store configuration
 import configureStore from '../store';
 
-const App = ({ store, pageProps, Component }) => {
+function DefaultComponent({ children }) {
+  return (
+    <div>
+      {children}
+    </div>
+  );
+}
+
+const App = ({ store, pageProps, Component = DefaultComponent }) => {
   return (
     <>
       <Head>
@@ -43,6 +51,7 @@ const App = ({ store, pageProps, Component }) => {
   );
 };
 
+/* istanbul ignore next */
 App.getInitialProps = async ({ Component, ctx }) => {
   return {
     pageProps: { ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}) },

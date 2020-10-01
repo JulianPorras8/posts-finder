@@ -49,9 +49,15 @@ npm run dev
 
 <pre>
 <code>
-#run app 
+#run test
 cd post-finder
 npm test
+
+#run test on CI
+npm test:ci
+
+#run test on Coverage
+npm test:cov
 </code>
 </pre>
 
@@ -64,6 +70,14 @@ npm start
 
 </code>
 </pre>
+
+### Coverage
+![](coverage.png)
+
+## Deployment
+Just push the latest code to master and the site will be deployed on AWS
+
+http://avantica-1704069303.us-east-1.elb.amazonaws.com
 
 ## Contributors
 -   [Julián Porras](https://github.com/JulianPorras8)

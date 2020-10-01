@@ -22,6 +22,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export function PostDialog(props) {
+  // console.log('25 props', props);
   const classes = useStyles();
   const dispatch = useDispatch();
 

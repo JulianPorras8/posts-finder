@@ -101,8 +101,8 @@ describe('Posts Reducer', () => {
       }, {
         id: 3,
         userId: 1,
-        title: 'test 3',
-        body: 'post Body 3',
+        title: 'test title',
+        body: 'test post',
       }],
     });
   });

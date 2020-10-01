@@ -3,6 +3,10 @@ module.exports = {
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
+    '!<rootDir>/.next/**',
+    '!<rootDir>/coverage/**',
+    '!<rootDir>/src/server/**',
+    '!<rootDir>/jest.config.js'
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
