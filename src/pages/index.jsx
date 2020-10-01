@@ -105,6 +105,7 @@ const Index = () => {
   );
 };
 
+/* istanbul ignore next */
 Index.getInitialProps = async ({ store }) => {
   store.dispatch({
     type: GET_POSTS,

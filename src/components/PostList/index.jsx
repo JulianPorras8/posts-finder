@@ -32,7 +32,7 @@ const filterPosts = (pageNumber, postsPerPage, items) => {
   return items.slice(start, end);
 };
 
-export function PostList(props) {
+export const PostList = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 

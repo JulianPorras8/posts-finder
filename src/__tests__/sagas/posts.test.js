@@ -1,7 +1,9 @@
 import { runSaga } from 'redux-saga';
 import { GET_POSTS_SUCCESS, GET_POSTS_ERROR } from '../../actions/types';
 import * as api from '../../api';
-import { getPosts } from '../../sagas/posts';
+import { getPosts, setPage } from '../../sagas/posts';
+
+import rootSaga from '../../sagas';
 
 describe('getPosts', () => {
   afterEach(() => {
@@ -40,3 +42,7 @@ describe('getPosts', () => {
     ]);
   });
 });
+
+// describe('Roor Saga cal', () => {
+//   rootSaga();
+// });
