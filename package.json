@@ -5,10 +5,9 @@
   "main": "src/server/index.js",
   "scripts": {
     "dev": "nodemon -w src/server src/server/index.js",
-    "test": "jest --watch",
-    "test:ci": "jest --ci",
-    "build": "next build",
-    "start": "npm run build && NODE_ENV=production pm2 start src/server/index.js"
+    "test": "jest --watch --detectOpenHandles",
+    "test:ci": "jest --ci --detectOpenHandles",
+    "build": "next build"
   },
   "author": "Julian Porras <JulianPorras8>",
   "license": "ISC",

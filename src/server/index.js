@@ -29,7 +29,7 @@ app
     server.get('*', (req, res) => handler(req, res));
 
     const port = config.port;
-    console.log('34 port', port);
+    
     server.listen(port, () => {
       console.log(`ready on http://localhost:${port}`);
     });

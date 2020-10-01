@@ -12,16 +12,16 @@ import Avatar from '@material-ui/core/Avatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import Person from '@material-ui/icons/Person';
-import Visibility from '@material-ui/icons/Visibility';
+import Edit from '@material-ui/icons/Edit';
 import Pagination from '@material-ui/lab/Pagination';
 
 // Modules
 import map from 'lodash/map';
-import find from 'lodash/find';
 import { useDispatch } from 'react-redux';
 
 // Actions
 import { SET_PRESELECTED_POST } from '../../actions/types';
+import { updatePageNumber } from '../../actions/postsAction';
 
 // Constants
 const LIMIT = 10;
@@ -39,19 +39,11 @@ export function PostList(props) {
   let posts = filterPosts(props.pageNumber, LIMIT, props.items);
   if (props.preSelectedPost) {
     posts = [props.preSelectedPost];
-    const postFound = find(props.postsInStore, (postInStore) => postInStore.id === props.preSelectedPost.id);
-    if (postFound) {
-      posts = [postFound];
-    }
-  } else {
-    posts = map(posts, (post) => {
-      const postFound = find(props.postsInStore, (postInStore) => postInStore.id === post.id);
-      if (postFound) {
-        return postFound;
-      }
-      return post;
-    });
   }
+
+  const pageChange = (_, value) => {
+    dispatch(updatePageNumber(value));
+  };
 
   useEffect(() => {
     window.onbeforeunload = () => {
@@ -77,7 +69,7 @@ export function PostList(props) {
                 />
                 <ListItemSecondaryAction>
                   <IconButton edge='end' aria-label='delete' onClick={() => props.onClickOpen(item)}>
-                    <Visibility />
+                    <Edit />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
@@ -91,7 +83,7 @@ export function PostList(props) {
           <Pagination
             count={Math.ceil(props.items.length / LIMIT)}
             page={props.pageNumber} color='primary'
-            onChange={props.handlePageChange}
+            onChange={pageChange}
           />}
       </Grid>
     </Grid>

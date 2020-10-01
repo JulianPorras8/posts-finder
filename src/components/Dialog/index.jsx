@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 // Material Components
 import { makeStyles } from '@material-ui/styles';
@@ -49,7 +49,6 @@ export function PostDialog(props) {
     });
     props.onClose();
   };
-
   return (
     <div>
       <Dialog
@@ -77,6 +76,7 @@ export function PostDialog(props) {
           <TextField
             id='standard-textarea'
             label='Body'
+            fullWidth
             placeholder='ej: large loremp ipsum'
             multiline
             value={props.post.body}
@@ -90,7 +90,7 @@ export function PostDialog(props) {
             size='small'
             className={classes.saveButton}
             startIcon={<SaveIcon />}
-            onClick={onSave}
+            onClick={() => { onSave() }}
           >
             Save
           </Button>

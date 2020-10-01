@@ -44,7 +44,6 @@ describe('Posts Reducer', () => {
       error: '',
       pageNumber: 1,
       posts: [],
-      postsInStore: [],
       preSelectedPost: null,
       selectedPost: null,
     });
@@ -60,7 +59,6 @@ describe('Posts Reducer', () => {
       error: 'Not Found',
       pageNumber: 1,
       posts: [],
-      postsInStore: [],
       preSelectedPost: null,
       selectedPost: null,
     });
@@ -76,7 +74,6 @@ describe('Posts Reducer', () => {
       error: '',
       pageNumber: 5,
       posts: [],
-      postsInStore: [],
       preSelectedPost: null,
       selectedPost: null,
     });
@@ -91,11 +88,6 @@ describe('Posts Reducer', () => {
       payload: MOCK_POST_ITEM,
     })).toEqual({
       ...initialState,
-      postsInStore: [{
-        body: 'test post',
-        id: 3,
-        title: 'test title',
-      }],
       items: [{
         id: 1,
         userId: 1,

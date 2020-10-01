@@ -18,7 +18,7 @@ import { PostDialog } from '../components/Dialog';
 import { PostList } from '../components/PostList';
 
 // Actions
-import { GET_POSTS, SET_POST, CHANGE_PAGE, CLOSE_ERROR, SET_PRESELECTED_POST } from '../actions/types';
+import { GET_POSTS, SET_POST, CLOSE_ERROR, SET_PRESELECTED_POST } from '../actions/types';
 
 const Index = () => {
   const classes = useStyles();
@@ -34,7 +34,6 @@ const Index = () => {
     items,
     selectedPost,
     pageNumber,
-    postsInStore,
     error,
     preSelectedPost,
   } = useSelector((state) => state.posts);
@@ -51,10 +50,6 @@ const Index = () => {
   const handleClose = () => {
     dispatch({ type: SET_POST, payload: null });
     setOpen(false);
-  };
-
-  const handlePageChange = (_, value) => {
-    dispatch({ type: CHANGE_PAGE, payload: value });
   };
 
   const onPreSelectPost = (post) => {
@@ -93,8 +88,6 @@ const Index = () => {
                     onClickOpen={handleClickOpen}
                     items={items}
                     pageNumber={pageNumber}
-                    postsInStore={postsInStore}
-                    handlePageChange={handlePageChange}
                     preSelectedPost={preSelectedPost}
                   />
                 </Grid>

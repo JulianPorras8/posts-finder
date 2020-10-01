@@ -17,7 +17,6 @@ export const initialState = {
   posts: [],
   selectedPost: null,
   preSelectedPost: null,
-  postsInStore: [],
 };
 
 export default function postReducer(state = initialState, action = {}) {
@@ -36,7 +35,16 @@ export default function postReducer(state = initialState, action = {}) {
     case UPDATE_POST:
       return {
         ...state,
-        postsInStore: state.postsInStore.concat([action.payload]),
+        items: state.items.map((item) => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              ...action.payload,
+            };
+          }
+          return item;
+        }),
+        preSelectedPost: state.preSelectedPost ? action.payload : null,
         selectedPost: null,
       };
     case ACHIEVE_SET_POST:
