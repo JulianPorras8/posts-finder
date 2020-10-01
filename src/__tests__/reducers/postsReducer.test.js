@@ -1,4 +1,4 @@
-import postReducer, { initialState } from '../postsReducer';
+import postReducer, { initialState } from '../../reducers/postsReducer';
 import {
   GET_POSTS_SUCCESS,
   GET_POSTS_ERROR,

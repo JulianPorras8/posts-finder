@@ -1,5 +1,5 @@
-import { updatePost, updatePageNumber } from '../postsAction';
-import { UPDATE_POST, UPDATE_PAGE_NUMBER } from '../types';
+import { updatePost, updatePageNumber } from '../../actions/postsAction';
+import { UPDATE_POST, UPDATE_PAGE_NUMBER } from '../../actions/types';
 
 const MOCK_POST_ITEM = {
   id: 1,

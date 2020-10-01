@@ -1,17 +1,19 @@
 module.exports = {
-  coverageDirectory: 'coverage',
-  moduleFileExtensions: [
-    "jsx",
-    "js"
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
   ],
-  testMatch: [
-    "**/*.test.(js|jsx)"
-  ],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   transform: {
-    "^.+\\.[t|j]sx?$": "babel-jest"
+    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
   },
-  testEnvironment: 'node',
-  coveragePathIgnorePatterns: [
-    "/node_modules/",
-  ]
+  transformIgnorePatterns: [
+    '/node_modules/',
+    '^.+\\.module\\.(css|sass|scss)$',
+  ],
+  moduleNameMapper: {
+    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+  },
 }
