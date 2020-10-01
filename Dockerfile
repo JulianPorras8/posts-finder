@@ -1,12 +1,11 @@
 FROM node:12.13.1-alpine
 
-ARG BACKEND_PORT
-ENV BACKEND_PORT=$BACKEND_PORT
+RUN npm install pm2 -g
 
 WORKDIR /app
 COPY . /app
 
-RUN npm install
+RUN npm run build
 
-EXPOSE $BACKEND_PORT
-CMD npm start
+EXPOSE 3000
+CMD pm2-runtime src/server/index.js
